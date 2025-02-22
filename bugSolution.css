@@ -1,0 +1,19 @@
+To solve this issue, ensure the correct order of operations within the `calc()` expression. For instance, if you need to subtract a fixed value from a percentage, you might need to add parentheses to ensure that the subtraction happens before the percentage calculation.
+
+Here's a corrected version of the CSS:
+
+```css
+.element {
+  width: calc(50% - 100px);
+}
+```
+
+This might still result in a negative value, so add a `max-width` or `min-width` as a fallback:
+```css
+.element {
+  width: calc(50% - 100px);
+  min-width: 0;
+}
+```
+
+Alternatively, avoid mixing percentage and pixel values in a single `calc()` expression.  Consider using viewport units (`vw`, `vh`) which are directly related to viewport dimensions, or using media queries to apply different styles based on screen size.
