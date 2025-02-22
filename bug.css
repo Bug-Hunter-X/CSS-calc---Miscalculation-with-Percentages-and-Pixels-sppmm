@@ -1,0 +1,9 @@
+The CSS property `calc()` is used incorrectly, resulting in unexpected behavior. Specifically, using `calc()` with percentages and pixels directly together can lead to problems due to the order of operations within the calculation. For instance, consider the following code:
+
+```css
+.element {
+  width: calc(50% - 100px);
+}
+```
+
+If the parent container has a width of 800px, the expected width might be 400px (50% of 800px) minus 100px, resulting in 300px. However, `calc()` might interpret this as `(50% of 800px) - 100px = 300px`.  If the parent container has a width of 200px, this same CSS will result in `(50% of 200px) - 100px = -50px`, which is an invalid negative width.
